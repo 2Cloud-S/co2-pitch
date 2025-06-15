@@ -1,0 +1,60 @@
+---
+title: 'Pitch: CO2 Emissions Explorer'
+author: "Afnan Khan"
+date: "June 15, 2025"
+output:
+  html_document:
+    df_print: paged
+  ioslides_presentation:
+    widescreen: true
+    transition: faster
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(gapminder)
+library(dplyr)
+```
+
+## Overview | Created on June 15, 2025
+
+- **App Name**: CO2 Emissions Explorer
+- **Purpose**: Visualize historical CO2 emissions and predict future trends for any country.
+- **Why It’s Cool**: Interactive, user-friendly, and educational!
+- **Link**: [Deployed on shinyapps.io](#) (https://etr80a-afnan-khan.shinyapps.io/CO2-Emissions/)
+
+## How It Works
+
+- **Input**: 
+  - Select a country from a dropdown menu.
+  - Adjust the year range with a slider.
+- **Output**: 
+  - Interactive plot showing historical CO2 emissions (blue) and a 10-year prediction (red).
+- **Data**: Uses the `gapminder` R package (gdpPercap as a proxy for CO2).
+
+## Sample Visualization
+
+```{r sample_plot}
+data <- gapminder %>% filter(country == "Canada", year >= 1950, year <= 2007)
+data$co2 <- data$gdpPercap / 1000
+ggplot(data, aes(x = year, y = co2)) +
+  geom_line(color = "blue") +
+  labs(title = "Sample: Canada CO2 Emissions", x = "Year", y = "CO2 (Metric Tons)") +
+  theme_minimal()
+```
+
+## Why Use It?
+
+- **Educational**: Learn about CO2 trends across countries.
+- **Interactive**: Adjust inputs to explore different scenarios.
+- **Simple**: No advanced knowledge required—just select and view!
+- Try it at: [Shiny App Link](#) (https://etr80a-afnan-khan.shinyapps.io/CO2-Emissions/).
+
+## Get Started
+
+1. Visit the app on shinyapps.io.
+2. Choose a country and year range.
+3. Explore the plot and hover for details.
+4. Source code: [GitHub Repository](#) (https://github.com/2Cloud-S/co2-explorer).
+5. Built on June 15, 2025, with Shiny and R.
